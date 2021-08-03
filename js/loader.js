@@ -1,19 +1,22 @@
-function loadBody(source){
-    var xhr= new XMLHttpRequest();
-    xhr.open('GET', source, true);
-    xhr.onreadystatechange= function() {
-        if (this.readyState !== 4) return;
-        if (this.status !== 200) return;
+randomRotation = (item) => {
+    val = getRandomInt(-10, 10);
+    console.log(val)
+    item.style.transform = "rotate(" + val + "deg)";
+    item.style.webkitTransform = "rotate(" + val + "deg)";
+    item.style.mozTransform = "rotate(" + val + "deg)";
+    item.style.display = "inline";
 
-        const new_doc = document.implementation.createHTMLDocument("newDocument").documentElement;
-        new_doc.innerHTML = this.responseText;
-        
-        var title = new_doc.querySelector('.title');
-        var body = new_doc.querySelector('.body');
+    item.style['box-shadow'] = val + "px " + Math.abs(val) + "px 5px #111";
+}
 
-        if (title) document.querySelector('.title').textContent = title.textContent;
-        if (body) document.querySelector('.body').innerHTML = body.innerHTML;
-    };
+getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
-    xhr.send();
+window.onload = () => {
+    let item = document.querySelectorAll('#polaroid')
+    console.log(item[0]);
+    randomRotation(item[0])
 }
