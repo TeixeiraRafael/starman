@@ -9,7 +9,7 @@
     font-family: sans-serif;
 }
 
-.body{
+.page-content{
     display: flex;
     flex-direction: row;
     background-color: #111;
