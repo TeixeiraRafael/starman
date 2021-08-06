@@ -1,6 +1,5 @@
 randomRotation = (item) => {
     val = getRandomInt(-10, 10);
-    console.log(val)
     item.style.transform = "rotate(" + val + "deg)";
     item.style.webkitTransform = "rotate(" + val + "deg)";
     item.style.mozTransform = "rotate(" + val + "deg)";
@@ -15,8 +14,24 @@ getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+getRandomImage = () =>{
+    let images = [
+        'alladin_sane.png',
+        'blind_prophet.png',
+        'halloween_jack.png',
+        'major_tom.png',
+        'thin_white_duke.png',
+        'ziggy_stardust.png'
+    ]
+
+    let key = Math.trunc(getRandomInt(0, 5));
+    let item = document.getElementById('polaroid-content');
+    item.src = 'assets/' + images[key];
+
+}
+
 window.onload = () => {
-    let item = document.querySelectorAll('#polaroid')
-    console.log(item[0]);
-    randomRotation(item[0])
+    let item = document.getElementById('polaroid')
+    randomRotation(item);
+    getRandomImage();
 }
